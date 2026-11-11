@@ -6,10 +6,10 @@ def matrixmul(a, b) -> torch.Tensor:
     Inputs can be Python lists, NumPy arrays, or torch Tensors.
     Returns a 2D tensor of shape (m, n) or a scalar tensor -1 if dimensions mismatch.
     """
-    a = torch.as_tensor(a, dtype=torch.float32)
-    b = torch.as_tensor(b, dtype=torch.float32)
+    a_t = torch.as_tensor(a, dtype=torch.float32)
+    b_t = torch.as_tensor(b, dtype=torch.float32)
 
-    if a.size(1) != b.size(0):
+    if a_t.size(1) != b_t.size(0):
         return torch.tensor(-1)
     else:
-        return a@b
+        return a_t @ b_t
