@@ -26,4 +26,4 @@ def k_means_clustering(points, k, initial_centroids, max_iterations) -> list[tup
 
         centroids = new_centroids
 
-    return [tuple(x.item() for x in centroid) for centroid in centroids]
+    return [tuple(round(float(x), 4) for x in centroid) for centroid in centroids]
