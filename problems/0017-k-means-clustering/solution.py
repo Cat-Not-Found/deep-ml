@@ -12,7 +12,6 @@ def k_means_clustering(points, k, initial_centroids, max_iterations) -> list[tup
     points_t = torch.as_tensor(points, dtype=torch.float)
     centroids = torch.as_tensor(initial_centroids, dtype=torch.float)
     # Your implementation here
-    
     for _ in range(max_iterations):
         distances = torch.sum((points_t.unsqueeze(1) - centroids.unsqueeze(0)) ** 2, dim=2)
 
@@ -22,14 +21,8 @@ def k_means_clustering(points, k, initial_centroids, max_iterations) -> list[tup
 
         for i in range(k):
             cluster_points = points_t[labels == i]
-
             if len(cluster_points) > 0:
                 new_centroids[i] = cluster_points.mean(dim=0)
-
-        # Check convergence
-        if torch.allclose(centroids, new_centroids):
-            centroids = new_centroids
-            break
 
         centroids = new_centroids
 
